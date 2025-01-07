@@ -3,7 +3,7 @@ const config = {
         APIURL:process.env.REACT_APP_API_URL || 'http://localhost:8080',
     },
     production: {
-        APIURL: process.env.REACT_APP_API_URL || 'https://icamp.tech',
+        APIURL: process.env.REACT_APP_APIURL || 'https://icamp.tech',
     },
 };
 
