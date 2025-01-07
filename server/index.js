@@ -9,6 +9,8 @@ import labsRoute from "./routes/labsRoute.js"
 import equipRoute from "./routes/equipRoute.js"
 import userRoute from "./routes/userRoute.js"
 import emailRoute from "./routes/emailRoute.js"
+import path from "path"
+import { fileURLToPath } from 'url';
 
 const app = express();
 dotenv.config(); 
@@ -43,9 +45,15 @@ app.use((err,req,res,next) => {
     })
 })
 
-app.get("/", (req,res)=>{
-    res.send("Success")
-})
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "uploads")));
+const distPath = path.join(__dirname, "build");
+app.use(express.static(distPath));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
 
 app.listen(PORT, () => {
     console.log(`Server started at port : ${PORT}`)

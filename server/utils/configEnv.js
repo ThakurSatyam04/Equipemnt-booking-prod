@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename)
 
 const environment = process.env.ENVIRONMENT;
 
-dotenv.config({path: path.join(`${__dirname}`, `../env/prod.env`)});
+// dotenv.config({path: path.join(`${__dirname}`, `../env/dev.env`)});
 
 // For ubuntu uncommnet this when pushing for production
-// dotenv.config({path: path.join(`${__dirname}`, `../env/${environment}.env`)});
+dotenv.config({path: path.join(`${__dirname}`, `../env/${environment}.env`)});
